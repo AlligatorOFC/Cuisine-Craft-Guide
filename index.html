@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cuisine Craft</title>
+  <title>AlligatorOFC Principal Page</title>
   <style>
     body {
       font-family: Arial;
@@ -19,6 +19,11 @@
     h2 {
       margin-top: 40px;
       color: #ccc;
+    }
+
+    h3 {
+      color: orange;
+      margin-top: -10px;
     }
 
     p {
@@ -41,12 +46,88 @@
       background: #ffb84d;
       transform: scale(1.05);
     }
+
+    /* Dropdown styles */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .dropdown-trigger {
+      display: inline-block;
+      padding: 15px 25px;
+      background: orange;
+      color: black;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      transition: 0.2s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .dropdown-trigger:hover {
+      background: #ffb84d;
+      transform: scale(1.05);
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #2a2a2a;
+      min-width: 220px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+      border-radius: 10px;
+      z-index: 1;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 110%;
+      padding: 10px 0;
+      border: 1px solid #444;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+      transition: 0.2s;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background: #ffb84d;
+      color: black;
+    }
+
+    /* Show dropdown when active class is present OR on hover/focus */
+    .dropdown.active .dropdown-content,
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-arrow {
+      margin-left: 8px;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    .dropdown.active .dropdown-arrow,
+    .dropdown:hover .dropdown-arrow {
+      transform: rotate(180deg);
+    }
   </style>
 </head>
 
 <body>
 
-<h1>🍽️ Cuisine Craft</h1>
+<h1>🐊 AlligatorOFC Principal Page</h1>
+<h3>Cuisine Craft & Mad Mix</h3>
 
 <p>A food addon for Minecraft Bedrock with many recipes and mechanics!</p>
 
@@ -54,13 +135,14 @@
 
 <h2>📌 Quick Access</h2>
 
-<a class="button" href="https://www.curseforge.com/minecraft-bedrock/addons/cuisine-craft">
-  ⬇️ Download Addon
-</a>
+<div class="dropdown" id="downloadDropdown">
+  <span class="dropdown-trigger" onclick="toggleDropdown(event)">⬇️ Download Addon <span class="dropdown-arrow">▼</span></span>
+  <div class="dropdown-content">
+    <a href="https://www.curseforge.com/minecraft-bedrock/addons/cuisine-craft">🍽️ Download Cuisine Craft</a>
+    <a href="https://www.curseforge.com/minecraft-bedrock/addons/mad-mix">🔧 Download Mad Mix</a>
+  </div>
+</div>
 
-<a class="button" href="https://github.com/AlligatorOFC/Cuisine-Craft-Guide/wiki">
-  📘 Getting Started Guide
-</a>
 
 <h2>🛠️ Support</h2>
 
@@ -73,8 +155,24 @@
 </a>
 
 <p style="margin-top:40px; font-size:14px; color:gray;">
-  Cuisine Craft © 2026
+  AlligatorOFC Team © 2026
 </p>
+
+<script>
+  function toggleDropdown(event) {
+    event.stopPropagation();
+    const dropdown = document.getElementById('downloadDropdown');
+    dropdown.classList.toggle('active');
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('downloadDropdown');
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove('active');
+    }
+  });
+</script>
 
 </body>
 </html>
